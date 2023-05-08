@@ -1,6 +1,8 @@
 import maya.cmds as cmds
 
-#must have selected the objets in outliner to be shifted
+'''
+Must have selected the objets in outliner to be shifted
+'''
 
 def shiftAnimOnSelected( desiredFrame, currentFrame ):
     timeshift = desiredFrame - currentFrame
@@ -9,5 +11,9 @@ def shiftAnimOnSelected( desiredFrame, currentFrame ):
         buffer = cmds.listConnections(type='animCurve')
         cmds.keyframe(buffer, edit=True, relative=True, option="over", timeChange=timeshift)
 
+'''
+currentFrame is the frame that will be shifted to the desiredFrame
+example: offset frame 180933 to 1033, desiredFrame is 1033, currentFrame is 180933
+'''
 
-shiftAnimOnSelected( desiredFrame, currentFrame ) #currentFrame is the frame that will be shifted to the desiredFrame
+shiftAnimOnSelected( desiredFrame, currentFrame )
